@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/indexddb-test/static/css/main.f855e6bc.css",
+    "main.js": "/indexddb-test/static/js/main.9a137ffe.js",
+    "index.html": "/indexddb-test/index.html",
+    "main.f855e6bc.css.map": "/indexddb-test/static/css/main.f855e6bc.css.map",
+    "main.9a137ffe.js.map": "/indexddb-test/static/js/main.9a137ffe.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.9a137ffe.js"
+  ]
+}
