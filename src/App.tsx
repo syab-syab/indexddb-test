@@ -24,7 +24,7 @@ export class MySubClassedDexie extends Dexie {
     this.version(1).stores({
         // オブジェクトストア(todos)の設定をする
         // ++を付けることでオートインクリメントしプライマリーキーにする
-      friends: '++id, task, completed'
+      todos: '++id, task, completed'
     });
   }
 }
