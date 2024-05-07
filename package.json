@@ -1,6 +1,7 @@
 {
   "name": "indexed-db-test",
   "version": "0.1.0",
+  "homepage": "https://syab-syab.github.io/indexddb-test/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
