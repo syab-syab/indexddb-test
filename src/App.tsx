@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Task from './components/Task';
-import Deadline from './components/Deadline';
+import DeadlineSpace from './components/DeadlineSpace';
 
 
 // const { todos } = db
@@ -13,7 +13,7 @@ function App() {
     <div className="container">
       <Task />
       <hr />
-      <Deadline />
+      <DeadlineSpace />
     </div>
   );
 }
