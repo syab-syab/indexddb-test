@@ -1,8 +1,7 @@
 import React from 'react';
 import './App.css';
-import Task from './components/Task';
-import DeadlineSpace from './components/DeadlineSpace';
-
+// import Task from './components/Task';
+import Counter from './components/Counter';
 
 // const { todos } = db
 
@@ -11,9 +10,9 @@ function App() {
 
   return (
     <div className="container">
-      <Task />
+      {/* <Task /> */}
       <hr />
-      <DeadlineSpace />
+      <Counter />
     </div>
   );
 }
