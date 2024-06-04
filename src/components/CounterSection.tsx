@@ -10,7 +10,7 @@ import dateCreate from '../functions/dateCreate'
 
 const { deadline } = db
 
-const Counter = () => {
+const CounterSection = () => {
   // もしかしたら必要の無いstateがあるかも
   // id は自動でインクリメント
   const [name, setName] = useState<string>("")
@@ -20,9 +20,9 @@ const Counter = () => {
   // スタート時のミリ秒(このstateは必要無いかも)
   // const [startSec, setStartSec] = useState<string>("")
   // 期限を達成したか否か
-  const [achievement, setAchievement] = useState<boolean>(false)
+  // const [achievement, setAchievement] = useState<boolean>(false)
   // 達成・未達成に関わらずカウントを終えたかどうか
-  const [finished, setFinished] = useState<boolean>(false)
+  // const [finished, setFinished] = useState<boolean>(false)
 
   const nameHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value)
@@ -43,13 +43,21 @@ const Counter = () => {
     console.log(startMilli)
     console.log(e)
     // console.log("startSec, ", startSec)
-    console.log(name, (Number(deadlineSec)*60000 + startMilli), startMilli, achievement, finished)
+    // console.log(name, (Number(deadlineSec)*60000 + startMilli), startMilli, achievement, finished)
+    console.log(name, (Number(deadlineSec)*60000 + startMilli), startMilli, false, false)
+    // await deadline.add({
+    //   name: name,
+    //   deadline: (Number(deadlineSec)*60000 + startMilli),
+    //   startSec: startMilli,
+    //   achievement: achievement,
+    //   finished: finished,
+    // })
     await deadline.add({
       name: name,
       deadline: (Number(deadlineSec)*60000 + startMilli),
       startSec: startMilli,
-      achievement: achievement,
-      finished: finished,
+      achievement: false,
+      finished: false,
     })
     setName('')
     setDeadlineSec('')
@@ -60,16 +68,16 @@ const Counter = () => {
 
   // 以下の二つは後ほどやる
   // deleteにプライマリーキーを指定して削除できる
-  // const deleteDeadline = async (id: number | undefined) => deadline.delete(id)
+  const deleteDeadline = async (id: number | undefined) => deadline.delete(id)
 
-  // const toggleStatus = async (
-  //   id: number | any,
-  //   e: React.ChangeEvent<HTMLInputElement>
-  // ) => {
+  const toggleStatus = async (
+    id: number | any,
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     // updateは更新したいデータのプライマリーキーを第一引数に指定し
     // 第二引数に変更するプロパティとその値を指定する
-  //   await deadline.update( id, {finished: !!e.target.checked })
-  // }
+    await deadline.update( id, {finished: !!e.target.checked })
+  }
 
   const allItems: Array<Deadline> | any = useLiveQuery(() => deadline.toArray(), [])
   const testSearch: Array<Deadline> | any  = allItems?.filter((item: Deadline | any) => item.finished === false)
@@ -107,7 +115,7 @@ const Counter = () => {
                     type="checkbox"
                     checked={item.finished}
                     className="checkbox-blue"
-                    // onChange={(e) => toggleStatus(item.id, e)}
+                    onChange={(e) => toggleStatus(item.id, e)}
                   />
                   {/* completedがtrueの場合のみ打ち消し線(strike-text)を付ける */}
                   <span className={`black-tex ${item.finished && 'strike-text'}`}>
@@ -118,7 +126,7 @@ const Counter = () => {
                 </label>
               </p>
               <i
-                // onClick={() => deleteDeadline(item.id)}
+                onClick={() => deleteDeadline(item.id)}
                 className="col s2 material-icons delete-button"
               >
                 delete
@@ -131,4 +139,4 @@ const Counter = () => {
   )
 }
 
-export default Counter
+export default CounterSection

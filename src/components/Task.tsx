@@ -52,11 +52,13 @@ const Task = () => {
   // 加えて文字列の比較では大文字と小文字が区別される
   // const completedItems = todos.where('completed').equals(true).toArray()
   // filterで代用した方が楽かもしれない
-  // const completedItems = allItems?.filter((item) => item.completed === true)
-  // console.log(completedItems)
+  // const completedItems: Array<Todo> | any  = allItems?.filter((item: Todo | any) => item.completed === true)
+  const completedItems: Array<Todo> | any  = allItems?.find((item: Todo | any) => item.completed === true)
+  // console.log(completedItems.task)
+
   return (
     <>
-      <p>{taskInput}</p>
+      {/* <p>{completedItems}</p> */}
       <h3 className="teal-text center-align">Todo App</h3>
       <form className="add-item-form" onSubmit={(e) => addTask(e)}>
         <input
